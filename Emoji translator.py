@@ -1,6 +1,6 @@
 # User input a string
 sentence = input("Let's input a sentence: ")
-string = sentence.split()
+string = sentence.lower().split()
 # Emoji dictionary
 emoji_dict ={
     # Basic emotions
