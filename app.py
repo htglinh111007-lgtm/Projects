@@ -134,31 +134,21 @@ def index():
     output = ""
     if request.method == "POST":
         lang = request.form.get("lang")
-        sentence = request.form.get("sentence", "")
-        string = sentence.lower().split()
-        if lang.lower() == "english":
-            a=-1
-            for s in string:
-                a = a+1
-                if a == len(string):
-                    break
-                for d in eng: 
-                    if s == d:
-                        string[a]=eng[d]
-                    else:
-                        continue
-        elif lang.lower() == "vietnamese":
-            b=-1
-            for s in string:
-                b=b+1
-                if b == len(string):
-                    break
-                for d in viet:
-                    if s == d:
-                        string[b] = viet[d]
-                    else:
-                        continue
-        output = " ".join(string)
+        sentence = request.form.get("sentence", "").lower()
+
+        if lang.lower() == "vietnamese":
+            result = sentence
+            for key in sorted(viet.keys(), key=len, reverse=True):
+                if key in result:
+                    result = result.replace(key, viet[key])
+            output = result
+
+        elif lang.lower() == "english":
+            result = sentence
+            for key in sorted(eng.keys(), key=len, reverse=True):
+                if key in result:
+                    result = result.replace(key, eng[key])
+            output = result
     return render_template("index.html", result=output)
 if __name__ == "__main__":
     app.run(debug=True)
