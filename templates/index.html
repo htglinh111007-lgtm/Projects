@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Emoji Translator</title>
+    <style>
+
+        body {
+            background-color: lightblue;
+            font-family: 'Times New Roman';
+            text-align: center;
+            padding: 40px;
+            background-image:url('img2.jpg');
+        }
+        input, select, button {
+            padding: 10px;
+            font-size: 16px;
+            margin: 8px;
+        }
+        .result {
+            margin-top: 20px;
+            font-size: 22px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Emoji Translator </h1>
+    <form method="POST">
+        <label>Language:</label>
+        <select name="lang">
+            <option value="English">English</option>
+            <option value="Vietnamese">Vietnamese</option>
+        </select><br>
+
+        <input type="text" name="sentence" placeholder="Enter your sentence..." required>
+        <button type="submit">Translate </button>
+    </form>
+
+    <div class="result">{{ result }}</div>
+</body>
+</html>
