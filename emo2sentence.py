@@ -130,15 +130,17 @@ def index():
         lang = request.form.get("lang")
         sentence = request.form.get("sentence", "").lower()
         if lang == "english":
+            result = sentence
             for key in sorted(eng.keys(), key=len, reverse=True):
-                if key in sentence:
-                    sentence = sentence.replace(key,eng[key])
-            output = sentence
+                if key in result:
+                    result = sentence.replace(key,eng[key])
+            output = result
         elif lang == "vietnamese":
+            result = sentence
             for key in sorted(viet.keys(), key=len, reverse=True):
-                if key in sentence:
-                    sentence = sentence.replace(key, viet[key])
+                if key in result:
+                    result = sentence.replace(key, viet[key])
             output = sentence
-    return render_template("index.html", sentence=output)
+    return render_template("index.html", result=output)
 if __name__ == "__main__":
     app.run(debug=True)
