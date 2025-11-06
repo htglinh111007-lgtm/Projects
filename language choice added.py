@@ -1,3 +1,4 @@
+#language choice added
 #choose web language:
 lang = input("Vietnamese/English: ")
 # User input a string
