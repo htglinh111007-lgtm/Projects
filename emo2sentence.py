@@ -126,7 +126,7 @@ viet = {
 def index():
     output = ""
     if request.method == "POST":
-        lang = request.form.get("lang", "").lower()
+        lang = request.form.get("lang").lower()
         sentence = request.form.get("sentence", "").lower()
         if lang == "english":
             result = sentence
@@ -134,7 +134,7 @@ def index():
                 if key in result:
                     result = result.replace(key,eng[key])
             output = result
-        elif lang.lower() == "vietnamese":
+        elif lang == "vietnamese":
             result = sentence
             for key in sorted(viet.keys(), key=len, reverse=True):
                 if key in result:
