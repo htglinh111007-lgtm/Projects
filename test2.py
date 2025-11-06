@@ -1,5 +1,3 @@
-from flask import Flask, render_template, request
-app = Flask(__name__)
 eng ={
     "❤️": "love",
     "👍": "like",
@@ -122,24 +120,18 @@ viet = {
     "👻": "ma",
     "🕵️": "sus",
 }
-@app.route("/", methods=["GET", "POST"])
-def index():
-    output = ""
-    if request.method == "POST":
-        lang = request.form.get("lang", "").lower()
-        sentence = request.form.get("sentence", "").lower()
-        if lang == "english":
-            result = sentence
-            for key in sorted(eng.keys(), key=len, reverse=True):
-                if key in result:
-                    result = result.replace(key,eng[key])
-            output = result
-        elif lang.lower() == "vietnamese":
-            result = sentence
-            for key in sorted(viet.keys(), key=len, reverse=True):
-                if key in result:
-                    result = result.replace(key, viet[key])
-            output = result
-    return render_template("index.html", result=output)
-if __name__ == "__main__":
-    app.run(debug=True)
+lang = input("English/Vietnamese: ")
+sentence = input("Type sth: ")
+if lang.lower() == "vietnamese":
+    result = sentence
+    for key in sorted(viet.keys(), key=len, reverse=True):
+        if key in result:
+            result = result.replace(key, viet[key])
+    output = result
+elif lang.lower() == "english":
+    result = sentence
+    for key in sorted(eng.keys(), key=len, reverse=True):
+        if key in result:
+            result = result.replace(key, eng[key])
+    output = result
+print(output)
