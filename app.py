@@ -135,14 +135,12 @@ def index():
     if request.method == "POST":
         lang = request.form.get("lang")
         sentence = request.form.get("sentence", "").lower()
-
         if lang.lower() == "vietnamese":
             result = sentence
             for key in sorted(viet.keys(), key=len, reverse=True):
                 if key in result:
                     result = result.replace(key, viet[key])
             output = result
-
         elif lang.lower() == "english":
             result = sentence
             for key in sorted(eng.keys(), key=len, reverse=True):

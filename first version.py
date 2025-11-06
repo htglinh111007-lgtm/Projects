@@ -69,7 +69,7 @@ emoji_dict ={
 }
 a=-1
 for s in string:
-    a = a+1
+    a += 1
     if a == len(string):
         break
     for d in emoji_dict:
