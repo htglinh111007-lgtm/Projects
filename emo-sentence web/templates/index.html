@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Emoji Translator</title>
+    <style>
+
+        body {
+            background-color: pink;
+            font-family: 'Times New Roman';
+            text-align: center;
+            padding: 40px;
+            background-image:url('img2.jpg');
+        }
+        input, select, button {
+            font-family: 'Times New Roman', Times, serif;
+            padding: 10px;
+            font-size:40px;
+            margin: 8px;
+        }
+        .result {
+            font-family: 'Times New Roman', Times, serif;
+            margin-top: 20px;
+            font-size: 35px;
+        }
+    </style>
+</head>
+<body>
+    <h1 style = "font-size: 50px;">Emoji Translator  </h1>
+    <form method="POST">
+        <label>Language:</label>
+        <select name="lang">
+            <option value="English">English</option>
+            <option value="Vietnamese">Vietnamese</option>
+        </select><br>
+
+        <input type="text" name="sentence" placeholder="Enter your sentence..." required>
+        <button type="submit">Translate </button>
+    </form>
+
+    <div class="result">{{ result }}</div>
+     <a href="https://www.facebook.com/?locale=vi_VN" style = "font-size:30px;">Use translation to text with your friends!</a>
+</html>
