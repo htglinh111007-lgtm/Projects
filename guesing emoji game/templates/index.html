@@ -2,11 +2,11 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Emoji Translator</title>
+    <title style = "font-size: 50px;">Emoji Quiz Game</title>
     <style>
 
         body {
-            background-color: lightblue;
+            background-color: lightgoldenrodyellow;
             font-family: 'Times New Roman';
             text-align: center;
             padding: 40px;
@@ -26,18 +26,11 @@
     </style>
 </head>
 <body>
-    <h1 style ="font-size: 50px;">Emoji Translator </h1>
-    <form method="POST">
-        <label>Language:</label>
-        <select name="lang">
-            <option value="English">English</option>
-            <option value="Vietnamese">Vietnamese</option>
-        </select><br>
-
-        <input type="text" name="sentence" placeholder="Enter your sentence..." required>
-        <button type="submit">Translate </button>
+    <h1 style = "font-size: 50px;">Emoji Quiz Game </h1>
+    <form method="GET">
+        <input type="text" name="emoji" placeholder="Your answer is: " required>
+        <button type="submit"> </button>
     </form>
-
     <div class="result">{{ result }}</div>
-     <a href="https://www.facebook.com/?locale=vi_VN">Use translation to text with your friends!</a>
+
 </html>

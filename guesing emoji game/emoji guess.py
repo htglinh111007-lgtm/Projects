@@ -1,4 +1,6 @@
+from flask import Flask, render_template, request
 import random
+app = Flask(__name__)
 dict ={
     "❤️": "love",
     "👍": "like",
@@ -57,12 +59,16 @@ dict ={
     "👻": "ghost",
     "🕵️": "sus"
 }
-quest = random.choice(list(dict.keys()))
-print(quest)
-ans = input("Your answer is: ")
-point = 0
-if ans == dict[quest]:
-    print("You got it")
-    point+=10
-else:
-    print("Incorrect answer")
+@app.route("/", methods = ["GET","POST"])
+def index():
+    result = ""
+    if request.method =="GET":
+        emoji = random.choice(list(dict.keys()))
+        answer = request.form["answer"].strip().lower()
+        if answer == dict[emoji]:
+            result = "Correct answer!"
+        else:
+            result = f"Incorrect answer, the answer must be {dict[emoji]}"
+    return render_template("index.html", result = result)
+if __name__ == "__main__":
+    app.run(debug=True)
