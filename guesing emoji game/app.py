@@ -66,7 +66,6 @@ def index():
     session["current_emoji"] = emoji
     return render_template("index.html", emoji=emoji)
 from flask import request
-
 @app.route("/check", methods=["POST"])
 def check():
     user_answer = request.form["answer"].strip().lower()   
@@ -79,4 +78,4 @@ def check():
 
     return render_template("result.html", emoji=emoji, result=result)
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(port = 5002, debug=True)
