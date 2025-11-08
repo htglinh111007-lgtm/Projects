@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Emoji Translator</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
     <style>
 
         body {
@@ -25,7 +26,22 @@
         }
     </style>
 </head>
+
 <body>
+
+    <input type="checkbox" id="menu-button">
+    <label for="menu-button">
+        <div class="one"></div>
+        <div class="two"></div>
+        <div class="three"></div>
+    </label>
+
+    <ul>
+        <li>Home</li>
+        <li><a href = "http://127.0.0.1:5002">Emoji Quiz</a></li>
+        <li><a href = "http://127.0.0.1:5001">Translate Emoji to your sentence</a></li>
+    </ul>
+
     <h1 style ="font-size: 50px;">Emoji Translator </h1>
     <form method="POST">
         <label>Language:</label>
@@ -40,4 +56,5 @@
 
     <div class="result">{{ result }}</div>
      <a href="https://www.facebook.com/?locale=vi_VN">Use translation to text with your friends!</a>
+</body>
 </html>

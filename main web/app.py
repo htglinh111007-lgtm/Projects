@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request
-app = Flask(__name__)
+app = Flask(__name__, static_folder='static', template_folder='templates')
 eng ={
     # Basic emotions
     "love": "❤️",
@@ -97,7 +97,7 @@ viet={
     "tôi": "🙋",
     "bạn": "👉",
     "họ": "👥",
-    "bạn": "🫶",
+    "bạn bè ": "🫶",
     "bro": "👊",
     "con gái": "💁‍♀️",
     "con trai": "🧑",
