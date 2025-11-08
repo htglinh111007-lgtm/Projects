@@ -1,4 +1,7 @@
+from flask import Flask, render_template, request, session
 import random
+app = Flask(__name__)
+app.secret_key = "secrect_random"
 dict ={
     "❤️": "love",
     "👍": "like",
@@ -57,11 +60,23 @@ dict ={
     "👻": "ghost",
     "🕵️": "sus"
 }
-while True:
+@app.route("/")
+def index():
     emoji = random.choice(list(dict.keys()))
-    print(emoji)
-    answer = input("Your answer is: ")
-    if answer == dict[emoji]:
-        print("True") 
+    session["current_emoji"] = emoji
+    return render_template("index.html", emoji=emoji)
+from flask import request
+
+@app.route("/check", methods=["POST"])
+def check():
+    user_answer = request.form["answer"].strip().lower()   
+    emoji = session.get("current_emoji")                  
+    correct_answer = dict.get(emoji)               
+    if user_answer == correct_answer:
+        result = "True ✅"
     else:
-        print("False")
+        result = f"False ❌ (Correct: {correct_answer})"
+
+    return render_template("result.html", emoji=emoji, result=result)
+if __name__ == "__main__":
+    app.run(debug=True)
